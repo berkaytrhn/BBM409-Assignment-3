@@ -26,18 +26,10 @@ def main(args):
 
 
     nbc = NaiveBayesClassifier()
-    nbc.fit(X_train, y_train, n_number=2)
+    nbc.fit(X_train, y_train, n_number=1)
+    nbc.predict(X_test)
 
-
-    """
-    iterable = map(lambda x:" ".join(x.split(":")[1:]) , X_train)
-
-    temp = np.array([np.array(text) for text in iterable])
-    """
     
-
-    print(args.temp)
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
