@@ -11,6 +11,6 @@ def bag_of_words_ngram(data, n_number=1):
 
 
 def preprocess_text(data):
-    iterable = map(lambda x:" ".join(x.split(":")[1:]) , data)
+    iterable = map(lambda x:" ".join(x[0].split(":")[1:]) , data)
     result = np.array(pd.DataFrame(np.array([np.array(text) for text in iterable])).iloc[:,0].str.replace("[^\w\s]",""))
     return result
