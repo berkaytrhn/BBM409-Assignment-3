@@ -3,8 +3,9 @@ import pandas as pd
 import argparse
 from sklearn.model_selection import train_test_split
 from naive_bayes import NaiveBayesClassifier
+from tf_idf import TfIdf
 from utils import *
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 
 def main(args):
@@ -34,7 +35,26 @@ def main(args):
     print(predicted.shape, predicted, predicted.dtype)
     print(y_test.shape, y_test, y_test.dtype)
     print(f"Accuracy: {round(accuracy_score(y_test, predicted)*100, 4)}%")
-    
+
+    tfIdfC = TfIdf()
+    tfIdfC.fit(X_train, y_train)
+    predicted = tfIdfC.predict(X_test)
+    print(predicted.shape, predicted, predicted.dtype)
+    print(y_test.shape, y_test, y_test.dtype)
+    print(f"Accuracy: {round(accuracy_score(y_test, predicted)*100, 4)}%")
+
+    # print(X_train[0:2])
+    # val, val2 = tf_idf_generator(X_train)
+    # print(val2)
+    # print(val)
+
+    # precision = precision_score(y_test, predicted)
+    # recall = recall_score(y_test, predicted)
+    # f1 = f1_score(y_test, predicted)
+    # accuracy = accuracy_score(y_test, predicted)
+    # _confusion_matrix = confusion_matrix(y_test, predicted)
+    # display_confusion_matrix(_confusion_matrix)
+    # print(f"Precision: {precision}, Recall: {recall}, F1: {f1}, Accuracy: {accuracy}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
