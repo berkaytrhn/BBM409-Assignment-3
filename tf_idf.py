@@ -14,11 +14,13 @@ class TfIdf:
         pass
 
     def fit(self, X, y):
-        bow_applied, feature_names = tf_idf_generator(X)
+        bow_applied_2, bow_applied, feature_names = tf_idf_generator(X)
 
         print(len(feature_names))
         print(len(np.unique(feature_names)))
         print(feature_names)
+
+        print_topN(bow_applied_2,feature_names)
 
         self.features = feature_names
         self.bow_spam = defaultdict(lambda: False)
@@ -89,3 +91,4 @@ class TfIdf:
             prediction = 1 if (sum_of_log_spam > sum_of_log_ham) else 0
             results.append(prediction)
         return np.array(results, dtype=np.int32)
+

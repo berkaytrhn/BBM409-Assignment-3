@@ -29,12 +29,12 @@ def main(args):
     X_test = preprocess_text(X_test)
     
 
-    nbc = NaiveBayesClassifier()
-    nbc.fit(X_train, y_train, n_number=1)
-    predicted = nbc.predict(X_test)
-    print(predicted.shape, predicted, predicted.dtype)
-    print(y_test.shape, y_test, y_test.dtype)
-    print(f"Accuracy: {round(accuracy_score(y_test, predicted)*100, 4)}%")
+    # nbc = NaiveBayesClassifier()
+    # nbc.fit(X_train, y_train, n_number=1)
+    # predicted = nbc.predict(X_test)
+    # print(predicted.shape, predicted, predicted.dtype)
+    # print(y_test.shape, y_test, y_test.dtype)
+    # print(f"Accuracy: {round(accuracy_score(y_test, predicted)*100, 4)}%")
 
     tfIdfC = TfIdf()
     tfIdfC.fit(X_train, y_train)
@@ -48,13 +48,13 @@ def main(args):
     # print(val2)
     # print(val)
 
-    # precision = precision_score(y_test, predicted)
-    # recall = recall_score(y_test, predicted)
-    # f1 = f1_score(y_test, predicted)
-    # accuracy = accuracy_score(y_test, predicted)
-    # _confusion_matrix = confusion_matrix(y_test, predicted)
-    # display_confusion_matrix(_confusion_matrix)
-    # print(f"Precision: {precision}, Recall: {recall}, F1: {f1}, Accuracy: {accuracy}")
+    precision = precision_score(y_test, predicted)
+    recall = recall_score(y_test, predicted)
+    f1 = f1_score(y_test, predicted)
+    accuracy = accuracy_score(y_test, predicted)
+    _confusion_matrix = confusion_matrix(y_test, predicted)
+    display_confusion_matrix(_confusion_matrix)
+    print(f"Precision: {precision}, Recall: {recall}, F1: {f1}, Accuracy: {accuracy}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
